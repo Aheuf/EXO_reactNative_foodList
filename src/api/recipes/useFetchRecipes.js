@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addRecipes } from "../../redux/actions";
-// const { getAllRecipes } = useFetchRecipes()
 
 const URL_API = 'https://api.spoonacular.com/recipes/complexSearch';
 const API_KEY = '6741dfcb301c476cbdb0ddb12dc50060';
