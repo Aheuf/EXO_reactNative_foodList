@@ -1,14 +1,21 @@
 import React from 'react'
-import { Image, View, Text, StyleSheet } from 'react-native'
+import { Image, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
-export default function RecipeTile({item}) {
+export default function RecipeTile({item, navigation}) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        navigation.navigate("RecipeDetails", {
+          id:item.id
+        })
+      }}
+    >
       <Image source={{uri: item.image}} style={styles.image}/>
       <View style={styles.subContainer}>
         <Text style={styles.title}>{item.title}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
