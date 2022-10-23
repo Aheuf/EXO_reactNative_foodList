@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addRecipes, selectRecipe } from "../../redux/actions";
+import { addRecipes, addSteps, selectRecipe } from "../../redux/actions";
 
 const URL_API = 'https://api.spoonacular.com/recipes/';
 const API_KEY = '6741dfcb301c476cbdb0ddb12dc50060';
@@ -37,8 +37,22 @@ export const useFetchRecipes = () => {
         }
     }
 
+    const getRecipeSteps = async (id) => {
+        try {
+            const response = await axios.get(`${URL_API}${id}/analyzedInstructions`,{
+                params:{
+                    apiKey: API_KEY
+                }
+            })
+            dispatch(addSteps(response.data[0].steps))
+        } catch (e) {
+            console.error(`error in getRecipeSteps : ${e}`)
+        }
+    }
+
     return {
         getAllRecipes,
-        getRecipeDetails
+        getRecipeDetails,
+        getRecipeSteps
     }
 }

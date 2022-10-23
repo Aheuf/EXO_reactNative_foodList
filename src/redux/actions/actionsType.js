@@ -1,2 +1,3 @@
 export const ADD_RECIPES = "ADD_RECIPES"
 export const SELECT_RECIPE = "SELECT_RECIPE"
+export const ADD_RECIPE_STEPS = "ADD_RECIPE_STEPS"
